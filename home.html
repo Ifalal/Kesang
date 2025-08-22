@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Kesang</title>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="tkami">
+        <a href="tkami.html">Tentang Kami</a>
+      </div>
+    </header>
+
+    <main class="hero">
+      <div class="logo">
+        <img src="asset/logo.png" alt="Logo">
+      </div>
+      <div class="content">
+        <span class="badge">KéSANG</span>
+        <h1>LEBIH PEDULI <br> KE BADANMU SENDIRI</h1>
+        <p><span class="blue">KéSANG</span> hadir bantu <br> cek kesehatan <b>KAMU</b></p>
+        <a href="#" class="btn-cek" data-bs-toggle="modal" data-bs-target="#konfirmasiModal">
+          CEK SEKARANG
+        </a>
+        
+      </div>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="row align-items-center">
+        <div class="col">
+          <img src="asset/Eputih.png" alt="Eputih" class="eputih">
+        </div>
+        <div class="col fw-bold fs-5">
+          <p>KONTAK</p>
+          <span>Replikas@gmail.com</span><br>
+          <span>085881705717</span>
+        </div>
+        <div class="col mt-3"> 
+          <p class="fw-bold fs-5">MEDIA SOSIAL</p>
+          <a href="https://facebook.com" target="_blank">Facebook</a>
+          <a href="https://instagram.com" target="_blank">Instagram</a>
+          <a href="https://twitter.com" target="_blank">Twitter</a>
+        </div>
+        <div class="col-5 d-flex justify-content-end">
+          <img src="asset/oscar.png" alt="Oscar" class="oscar">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="konfirmasiModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-body text-center p-5">
+          <h3 class="fw-bold mb-3">Konfirmasi Data</h3>
+          <p class="mb-3">Masukan NIK</p>
+          <input type="text" class="form-control text-center mb-4 rounded-pill" placeholder="16 Digit No NIK.">
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-custom px-4 rounded-pill d-flex align-items-center gap-2"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#registrasiModal"
+                    data-bs-dismiss="modal">
+              <i class="bi bi-camera"></i> REGISTRASI
+            </button>
+            <button class="btn btn-custom px-4 rounded-pill d-flex align-items-center gap-2"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#otpModal"
+                    data-bs-dismiss="modal">
+              <i class="bi bi-check-circle"></i> KONFIRMASI
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="registrasiModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-body text-center p-5">
+          <h3 class="fw-bold mb-4">Registrasi</h3>
+          <div class="mb-3 text-start">
+            <label class="form-label">Masukan Nama:</label>
+            <input type="text" class="form-control rounded-pill" placeholder="Nama Lengkap">
+          </div>
+          <div class="mb-3 text-start">
+            <label class="form-label">Masukan Email:</label>
+            <input type="email" class="form-control rounded-pill" placeholder="Email">
+          </div>
+          <div class="mb-3 text-start">
+            <label class="form-label">Masukan No Telp:</label>
+            <input type="text" class="form-control rounded-pill" placeholder="No Telp">
+          </div>
+          <div class="mb-4 text-start">
+            <label class="form-label">Masukan NIK:</label>
+            <input type="text" class="form-control rounded-pill" placeholder="16 Digit No NIK">
+          </div>
+          <button class="btn btn-custom px-5 rounded-pill d-flex align-items-center gap-2 mx-auto"
+                  data-bs-toggle="modal"
+                  data-bs-target="#otpModal"
+                  data-bs-dismiss="modal">
+            <i class="bi bi-check-circle"></i> KONFIRMASI
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal fade" id="otpModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 shadow">
+        <div class="modal-body text-center p-5">
+          <h3 class="fw-bold mb-4">Kode OTP</h3>
+          <div class="d-flex justify-content-center gap-3 mb-4">
+            <input type="text" maxlength="1" class="otp-input">
+            <input type="text" maxlength="1" class="otp-input">
+            <input type="text" maxlength="1" class="otp-input">
+            <input type="text" maxlength="1" class="otp-input">
+          </div>
+          <button class="btn btn-custom px-5 rounded-pill d-flex align-items-center gap-2 mx-auto">
+            <i class="bi bi-check-circle"></i> KONFIRMASI
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
