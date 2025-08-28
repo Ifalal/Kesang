@@ -18,34 +18,30 @@ body {
 }
 
 .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 70px;
-    padding: 20px;
-    min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  padding: 20px;
+  min-height: 70vh;
 }
 
 .hero img {
-    max-width: 240px;
+  max-width: 240px;
+  transition: all 0.3s ease-in-out;
 }
+
+.hero img:hover {
+  filter: drop-shadow(0 0 2px #5DCECE);
+  transform: scale(1.05);
+}
+
 
 .content {
     display: flex;
     flex-direction: column;
 }
 
-.badge {
-    margin-bottom: 10px;
-    width: 70px;
-    line-height: -15;
-    display: inline-block;
-    border: 2px solid #5DCECE;
-    color: #5DCECE;
-    padding: 5px 15px;
-    border-radius: 30px;
-    font-weight: bold;
-}
 
 .content h1 {
     font-size: 32px;
@@ -64,21 +60,28 @@ body {
 }
 
 .btn-cek {
-    margin-left: 30px;
-    width: 200px;
-    background-color: #5DCECE;
-    color: #fff;
-    text-decoration: none;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-align: center;
-    display: inline-block;
+  margin-left: 30px;
+  width: 200px;
+  background-color: #5DCECE;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  transition: all 0.3s ease-in-out; /* biar animasi halus */
+}
+
+.btn-cek:hover {
+  background-color: #4bbaba; /* lebih gelap dikit saat hover */
+  box-shadow: 0 0 10px #5DCECE, 0 0 20px #5DCECE;
+  transform: scale(1.05); /* efek membesar */
 }
 
 .footer {
-    background: #5DCECE;
-    background: linear-gradient(0deg,rgba(93, 206, 206, 1) 0%, rgba(255, 255, 255, 1) 81%);
+  background: #5DCECE;
+  background: linear-gradient(90deg, rgba(93, 206, 206, 1) 45%, rgba(255, 255, 255, 1) 87%, rgba(93, 206, 206, 1) 100%);
     color: #fff;
 }
 
@@ -171,3 +174,273 @@ body {
     border-radius: 10px;
   }
   
+  .card-custom {
+    border-radius: 20px;
+    padding: 30px;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .status-bar {
+    height: 20px;
+    border-radius: 10px;
+    background: #eee;
+    margin-bottom: 15px;
+    overflow: hidden;
+  }
+  
+  .status-bar-fill {
+    height: 100%;
+    background: blue;
+    width: 100%;
+  }
+  
+  .legend span {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  .legend i {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  
+  .legend .sehat i { background: blue; }
+  .legend .cukup i { background: orange; }
+  .legend .tidak i { background: red; }
+  
+  .history-card {
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    background: white;
+    text-align: center;
+  }
+  
+  .btn-custom {
+    background-color: #4dc7c7;
+    color: white;
+    font-weight: 600;
+    border: none;
+    transition: 0.3s;
+  }
+  
+  .btn-custom:hover {
+    background-color: #37a6a6;
+  }
+
+  .btn-custom {
+  background-color: #4fd1c5;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+.btn-custom:hover {
+  background-color: #38b2ac;
+  color: white;
+}
+
+.badge {
+  margin-top: 3px;
+  border: 2px solid #38c6c6;
+  color: #38c6c6;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 10px;
+  text-transform: uppercase;
+  width: 90px;
+}
+
+/* BADGE WARNA KHUSUS */
+.badge-sehat {
+    background-color: #3498db; /* biru */
+}
+.badge-cukup {
+    background-color: #f1c40f; /* kuning */
+    color: #000; /* biar teks kebaca */
+}
+.badge-tidak {
+    background-color: #e74c3c; /* merah */
+}
+
+.nav-pills .nav-link {
+    background-color: #eafafa;
+    color: #5DCECE;
+    border-radius: 50rem;
+    font-weight: 600;
+  }
+  .nav-pills .nav-link.active {
+    background-color: #5DCECE;
+    color: white;
+  }
+  .btn-info {
+    background-color: #5DCECE;
+    border: none;
+  }
+  .btn-info:hover {
+    background-color: #4ababa;
+  }
+  .fw-bold.text-info {
+    color: #5DCECE !important;
+  }
+
+  .form-control {
+    border: 2px solid #5DCECE;
+    border-radius: 10px;
+    box-shadow: none;
+  }
+  
+  .form-control:focus {
+    border-color: #4ababa;
+    box-shadow: 0 0 0 0.25rem rgba(93, 206, 206, 0.25);
+  }
+
+  .accordion-button {
+    background-color: #f8f9fa; /* warna abu soft */
+    border-radius: 12px; 
+    font-weight: 600;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background-color: #0d6efd; /* warna biru saat terbuka */
+    color: white;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .accordion-body {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 0 0 12px 12px;
+    padding: 15px;
+  }
+
+  .accordion-item {
+    border: none;
+    margin-bottom: 10px;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background-color: #5DCECE !important;
+    color: #fff !important;  /* biar teks tetap kebaca */
+  }
+  
+  .accordion-button:focus {
+    box-shadow: none !important; /* hilangin outline default */
+  }
+  
+  /* Font global */
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Card Styling */
+  .card {
+    border: none;
+  }
+  
+  /* Accordion Button */
+  .accordion-button {
+    font-weight: 500;
+    background-color: #f8f9fa;
+  }
+  
+  .accordion-button:not(.collapsed) {
+    background-color: #0d6efd;
+    color: #fff;
+  }
+  
+  .accordion-body {
+    background-color: #fdfdfd;
+    border-radius: 0.5rem;
+    padding: 15px;
+  }
+  
+  /* Input disabled */
+  input[disabled] {
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+  }
+  
+  /* Progress bar */
+  .progress {
+    height: 10px;
+    border-radius: 10px;
+  }
+  
+  /* Small labels */
+  label.small {
+    font-size: 0.85rem;
+  }
+  
+  /* ====== Halaman Tentang KéSANG ====== */
+.tentang-header {
+  background-color: #5DCECE;
+  padding: 20px 40px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.tentang-header a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.tentang-header a i {
+  margin-right: 5px;
+}
+
+.tentang-logo {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.tentang-logo img {
+  height: 60px;
+  margin-right: 15px;
+}
+
+.tentang-logo-text h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.tentang-logo-text p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.tentang-content {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.tentang-content h2 {
+  color: #5DCECE;
+  font-size: 26px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.tentang-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: auto;
+  color: #333;
+}
+
