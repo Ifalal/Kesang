@@ -89,13 +89,10 @@ ob_start();
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <title>Laporan Kesehatan</title>
   <style>
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      font-size: 12px;
-      background: #f8f9fa;
+  body {
+      font-family: 'Poppins', sans-serif;
       margin: 0;
-      padding: 20px;
-      color: #333;
+      padding: 0;
     }
     h2 {
       text-align: center;

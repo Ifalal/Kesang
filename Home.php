@@ -5,17 +5,14 @@ include "service/database.php";
 $login_message = "";
 $register_message = "";
 
-// cek session login
 if (isset($_SESSION['is_login']) && $_SESSION['is_login'] === true) {
     header("Location: hal.php");
     exit;
 }
 
-// LOGIN 
 if (isset($_POST['login'])) {
     $nik = trim($_POST['nik']);
 
-    // Validasi menggunakan prepared statement
     $stmt = $db->prepare("SELECT * FROM users WHERE nik = ?");
     $stmt->bind_param("s", $nik);
     $stmt->execute();
@@ -33,7 +30,6 @@ if (isset($_POST['login'])) {
     }
 }
 
-// REGISTER 
 if (isset($_POST['register'])) {
     $nama_lengkap = trim($_POST["nama_lengkap"]);
     $email = trim($_POST["email"]);
@@ -45,7 +41,7 @@ if (isset($_POST['register'])) {
     } elseif (strlen($email) < 6) {
         $register_message = "Email minimal 6 karakter.";
     } else {
-        // Cek NIK sudah ada
+
         $cek_stmt = $db->prepare("SELECT nik FROM users WHERE nik = ?");
         $cek_stmt->bind_param("s", $nik);
         $cek_stmt->execute();
@@ -125,7 +121,6 @@ if (isset($_POST['register'])) {
   </div>
 </footer>
 
-  <!-- Modal Login -->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 shadow">
@@ -149,7 +144,6 @@ if (isset($_POST['register'])) {
     </div>
   </div>
   
-  <!-- Modal Register -->
   <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content rounded-4 shadow">

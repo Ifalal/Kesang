@@ -1,10 +1,7 @@
 <?php  
 session_start();
-
-// Pastikan koneksi database sudah di-include dan variabel $db tersedia
 include "service/database.php";
 
-// Cek apakah user sudah login dan nik ada di session
 if (empty($_SESSION['nik']) || empty($_SESSION['is_login']) || $_SESSION['is_login'] !== true) {
     header("Location: home.php");
     exit;
@@ -12,7 +9,6 @@ if (empty($_SESSION['nik']) || empty($_SESSION['is_login']) || $_SESSION['is_log
 
 $nik = $_SESSION['nik'];
 
-// --- Ambil data pasien
 $stmt_pasien = $db->prepare("SELECT * FROM view_data_pasien WHERE nik = ?");
 if (!$stmt_pasien) {
     die("Prepare statement gagal: " . $db->error);
@@ -26,15 +22,13 @@ if ($result_pasien->num_rows === 0) {
 }
 $pasien = $result_pasien->fetch_assoc();
 
-// --- Hitung umur dari tanggal lahir
 $umur = "";
 if (!empty($pasien['tanggal_lahir'])) {
     $tgl_lahir = new DateTime($pasien['tanggal_lahir']);
     $today = new DateTime();
-    $umur = $today->diff($tgl_lahir)->y; // umur dalam tahun
+    $umur = $today->diff($tgl_lahir)->y;
 }
 
-// --- Ambil data rawat inap (1 tahun terakhir)
 $stmt_inap = $db->prepare("
     SELECT * FROM rawat_inap 
     WHERE nik = ? 
@@ -48,7 +42,6 @@ while ($row = $result_inap->fetch_assoc()) {
     $rawat_inap[] = $row;
 }
 
-// --- Ambil data rawat jalan (1 tahun terakhir)
 $stmt_jalan = $db->prepare("
     SELECT * FROM rawat_jalan 
     WHERE nik = ? 
@@ -62,12 +55,10 @@ while ($row = $result_jalan->fetch_assoc()) {
     $rawat_jalan[] = $row;
 }
 
-// Hitung skor kesehatan
 $skor = 0;
 
-// Rawat inap
 foreach ($rawat_inap as $ri) {
-    $skor_penyakit = 1; // default ringan
+    $skor_penyakit = 1;
     if ($ri['tingkat_penyakit'] == "Sedang") {
         $skor_penyakit = 2;
     } elseif ($ri['tingkat_penyakit'] == "Berat") {
@@ -77,11 +68,10 @@ foreach ($rawat_inap as $ri) {
     $skor += ($ri['jumlah_hari'] / 2) + ($skor_penyakit * 3);
 
     if ($ri['status'] == "Sembuh") {
-        $skor -= 2; // dikurang 2 karna sudah sembuh
+        $skor -= 2;
     }
 }
 
-// Rawat jalan
 foreach ($rawat_jalan as $rj) {
     $skor_penyakit = 1; 
     if ($rj['tingkat_penyakit'] == "Sedang") {
@@ -97,7 +87,6 @@ foreach ($rawat_jalan as $rj) {
     }
 }
 
-// Menentukan Status dari score 
 if ($skor <= 7) {
     $status = "Sehat";
     $warna_status = "bg-primary";
@@ -126,7 +115,6 @@ if ($skor <= 7) {
 <body class="bg-light">
 
 <div class="container-fluid py-4">
-  <!-- Header -->
   <div class="d-flex justify-content-between align-items-center mb-3">
     <a href="logout.php" class="text-decoration-none fw-bold text-secondary">
       <i class="bi bi-arrow-left-circle-fill" ></i> Kembali
@@ -136,17 +124,14 @@ if ($skor <= 7) {
   </div>
 
   <div class="row g-4">
-    <!-- Ilustrasi -->
     <div class="col-md-5 d-none d-md-flex align-items-center justify-content-center">
       <img src="asset/amico.png" class="img-fluid w-75" alt="Ilustrasi Kesehatan">
     </div>
 
-    <!-- Konten -->
     <div class="col-md-7">
       <div class="card shadow-sm rounded-4 p-4">
         <h5 class="fw-bold text-center mb-3">Data Pasien</h5>
 
-        <!-- Profil -->
       <div class="row g-3 mb-3 pasien-data">
   <div class="col-md-3 text-center">
     <img src="<?= htmlspecialchars($pasien['foto']) ?: 'asset/Group 49.png' ?>"
@@ -188,14 +173,12 @@ if ($skor <= 7) {
                readonly>
       </div>
 
-      <!-- Berat/Tinggi digabung -->
       <div class="col-md-6">
         <input type="text" class="form-control" 
                value=" <?= htmlspecialchars($pasien['berat_badan']) ?> kg / <?= htmlspecialchars($pasien['tinggi_badan']) ?> cm" 
                readonly>
       </div>
 
-      <!-- Umur otomatis -->
       <div class="col-md-6">
         <input type="text" class="form-control" 
                value=" <?= $umur ?> Tahun" 
@@ -212,8 +195,6 @@ if ($skor <= 7) {
   </div>
 </div>
 
-
-        <!-- Status Kesehatan -->
         <h6 class="fw-bold">Status Kesehatan: 
         <div class="progress mb-2">
           <div class="progress-bar <?= $warna_status ?>" role="progressbar" style="width: <?= $width ?>"></div>
@@ -224,7 +205,6 @@ if ($skor <= 7) {
           <span><span class="badge bg-danger">&nbsp;</span> Tidak Sehat</span>
         </div>
 
-        <!-- Tabs -->
         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
           <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#inap">Rawat Inap (<?= count($rawat_inap) ?>)</button></li>
           <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#jalan">Rawat Jalan (<?= count($rawat_jalan) ?>)</button></li>
@@ -232,7 +212,6 @@ if ($skor <= 7) {
 
         <div class="tab-content">
         
-<!-- Tab Rawat Inap -->
 <div class="tab-pane fade show active" id="inap">
   <div class="accordion" id="accordionInap">
     <?php if (count($rawat_inap) > 0): ?>
@@ -294,7 +273,6 @@ if ($skor <= 7) {
   </div>
 </div>
 
-<!-- Tab Rawat Jalan -->
 <div class="tab-pane fade" id="jalan">
   <div class="accordion" id="accordionJalan">
     <?php if (count($rawat_jalan) > 0): ?>
