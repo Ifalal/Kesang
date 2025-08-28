@@ -12,6 +12,7 @@ if (empty($_SESSION['nik']) || empty($_SESSION['is_login']) || $_SESSION['is_log
 
 $nik = $_GET['nik'] ?? $_SESSION['nik'];
 
+
 $stmt_pasien = $db->prepare("SELECT * FROM view_data_pasien WHERE nik = ?");
 $stmt_pasien->bind_param("s", $nik);
 $stmt_pasien->execute();

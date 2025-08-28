@@ -6,7 +6,7 @@ $login_message = "";
 $register_message = "";
 
 if (isset($_SESSION['is_login']) && $_SESSION['is_login'] === true) {
-    header("Location: hal.php");
+    header("Location: home.php");
     exit;
 }
 
