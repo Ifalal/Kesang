@@ -33,7 +33,7 @@ Dibangun dengan **PHP NATIVE**, **MySQL**, **Bootstrap 5**, dan **Dompdf** untuk
 3. Import database:  
    - Buka `phpMyAdmin`.  
    - Buat database baru `kesang`.  
-   - Import file `kesang.sql` yang ada di folder kesang.  
+   - Ekstrak lalu Import file `kesang.sql` yang ada di folder kesang.  
 4. Jika Menggunakan XAMPP agar dompdf berjalan secara maksimal maka pada XAMPP control panel klik 'config' pada Apache Cari dan buka 'Php.ini'
    Cari ;extension=gd Kemudian Hilangkan titik Koma (;) pada extension=gd, Lalu Restart Apache pada XAMPP control panel
 5.  Jalankan aplikasi KéSANG di browser:  
