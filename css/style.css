@@ -444,3 +444,31 @@ max-width: 900px;
 margin: auto;
 color: #333;
 }
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .hero img {
+    max-width: 180px;
+  }
+
+  .content {
+    align-items: center;
+  }
+
+  .content h1 {
+    font-size: 24px;
+  }
+
+  .content p {
+    font-size: 16px;
+  }
+
+  .badge-kesang {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}

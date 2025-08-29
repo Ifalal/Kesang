@@ -18,7 +18,7 @@ $stmt_pasien->execute();
 $result_pasien = $stmt_pasien->get_result();
 
 if ($result_pasien->num_rows === 0) {
-    die("Data pasien dengan NIK $nik tidak ditemukan.");
+    die("Data pasien dengan NIK $nik tidak terdaftar.");
 }
 $pasien = $result_pasien->fetch_assoc();
 
@@ -100,7 +100,10 @@ if ($skor <= 7) {
     $warna_status = "bg-danger";
     $width = "20%";
 }
+
+  $foto = !empty($pasien['foto']) ? htmlspecialchars($pasien['foto']) : 'uploads/default.png';
 ?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -132,13 +135,14 @@ if ($skor <= 7) {
       <div class="card shadow-sm rounded-4 p-4">
         <h5 class="fw-bold text-center mb-3">Data Pasien</h5>
 
-      <div class="row g-3 mb-3 pasien-data">
-  <div class="col-md-3 text-center">
-    <img src="<?= htmlspecialchars($pasien['foto']) ?: 'asset/Group 49.png' ?>"
-         width="130" height="130" 
-         class="img-fluid rounded-3" 
-         alt="Foto Pasien">
-  </div>
+        <div class="row g-3 mb-3 pasien-data">
+          <div class="col-md-3 text-center">
+            <img src="/Kesang/<?= $foto ?>"
+                 width="130" height="130"
+                 class="img-fluid rounded-3"
+                 alt="Foto Pasien">
+          </div>
+
 
   <div class="col-md-9">
     <div class="row g-2">
@@ -333,7 +337,7 @@ if ($skor <= 7) {
     <?php endif; ?>
   </div>
 </div>
-<a href="export_pdf.php" class="btn-cek" target="_blank">📄 Export PDF</a>
+<a href="export_pdf.php" class="btn-cek" target="_blank" >📄 Export PDF</a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

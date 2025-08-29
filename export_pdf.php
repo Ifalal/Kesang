@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+require 'Vendor/autoload.php';
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -163,6 +163,15 @@ ob_start();
       font-weight: 600;
     }
     tr:nth-child(even) { background: #f9fdfd; }
+
+    .fotologo {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #5DCECE;
+      padding: 20px;
+     }
   </style>
 </head>
 <body>
@@ -174,27 +183,32 @@ ob_start();
   <?php
   $foto_db = $pasien['foto'] ?? "";
   $foto_full = empty($foto_db) 
-      ? "http://localhost/KESANG/asset/Group 49.png" 
+      ? "http://localhost/KESANG/asset/profile.jpeg" 
       : "http://localhost/KESANG/" . ltrim($foto_db, '/');
   ?>
   <table style="width: 100%; border: none;">
     <tr>
       <td style="width: 120px; border: none;">
         <img src="<?= $foto_full ?>" class="foto">
-      </td>
       <td style="border: none; padding-left: 12px;">
         <div><span class="label">NIK:</span> <?= htmlspecialchars($pasien['nik']) ?></div>
         <div><span class="label">Nama:</span> <?= htmlspecialchars($pasien['nama_lengkap']) ?></div>
         <div><span class="label">Jenis Kelamin:</span> <?= htmlspecialchars($pasien['jenis_kelamin']) ?></div>
-        <div><span class="label">Umur:</span> <?= $umur ?> Tahun</div>
         <div><span class="label">No. BPJS:</span> <?= htmlspecialchars($pasien['no_bpjs']) ?></div>
         <div><span class="label">No. Asuransi:</span> <?= htmlspecialchars($pasien['no_asuransi']) ?></div>
         <div><span class="label">Berat/Tinggi:</span> <?= htmlspecialchars($pasien['berat_badan']) ?> kg / <?= htmlspecialchars($pasien['tinggi_badan']) ?> cm</div>
         <div><span class="label">Golongan Darah:</span> <?= htmlspecialchars($pasien['gol_darah']) ?></div>
       </td>
+
+      <td style="width: 120px; border: none; text-align: right; vertical-align: top;" class="fotologo">
+        <img src="http://localhost/KESANG/asset/logo.png" 
+             style="width:120px; height:120px;" 
+             alt="Logo">
+      </td>
     </tr>
   </table>
 </div>
+
 
 <div class="card">
   <h3>Status Kesehatan: <?= $status ?></h3>
